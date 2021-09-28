@@ -1,13 +1,13 @@
 overwrite: true
-schema: "http://localhost:4000/graphql"
-documents: "src/api/queries/**/*.ts"
+schema: 'http://localhost:4000/graphql'
+documents: 'src/api/queries/**/*.ts'
 generates:
   src/hooks/useApollo.ts:
     plugins:
-      - "typescript"
-      - "typescript-operations"
-      - "typescript-react-apollo"
-      - "fragment-matcher"
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+      - 'fragment-matcher'
 hooks:
   afterOneFileWrite:
     - prettier --write

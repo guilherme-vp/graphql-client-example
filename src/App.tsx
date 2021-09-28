@@ -5,12 +5,12 @@ import { client } from './api/client'
 import { Dogs } from './screens/Dogs'
 
 function App() {
-  return (
-    <ApolloProvider client={client}>
-      <GlobalStyle />
-      <Dogs />
-    </ApolloProvider>
-  )
+	return (
+		<ApolloProvider client={client}>
+			<GlobalStyle />
+			<Dogs />
+		</ApolloProvider>
+	)
 }
 
 export default App

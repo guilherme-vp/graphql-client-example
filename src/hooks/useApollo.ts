@@ -3,100 +3,100 @@ import * as Apollo from '@apollo/client'
 
 export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K]
+	[K in keyof T]: T[K]
 }
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>
+	[SubKey in K]?: Maybe<T[SubKey]>
 }
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>
+	[SubKey in K]: Maybe<T[SubKey]>
 }
 const defaultOptions = {}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string
-  String: string
-  Boolean: boolean
-  Int: number
-  Float: number
+	ID: string
+	String: string
+	Boolean: boolean
+	Int: number
+	Float: number
 }
 
 export type AddDog = {
-  age: Scalars['Int']
-  isPedigree?: Maybe<Scalars['Boolean']>
-  name: Scalars['String']
+	age: Scalars['Int']
+	isPedigree?: Maybe<Scalars['Boolean']>
+	name: Scalars['String']
 }
 
 export type Dog = {
-  __typename?: 'Dog'
-  age: Scalars['Int']
-  id: Scalars['ID']
-  isPedigree?: Maybe<Scalars['Boolean']>
-  name: Scalars['String']
+	__typename?: 'Dog'
+	age: Scalars['Int']
+	id: Scalars['ID']
+	isPedigree?: Maybe<Scalars['Boolean']>
+	name: Scalars['String']
 }
 
 export type Mutation = {
-  __typename?: 'Mutation'
-  addDog: Dog
-  removeDog: Scalars['Boolean']
+	__typename?: 'Mutation'
+	addDog: Dog
+	removeDog: Scalars['Boolean']
 }
 
 export type MutationAddDogArgs = {
-  input: AddDog
+	input: AddDog
 }
 
 export type MutationRemoveDogArgs = {
-  id: Scalars['ID']
+	id: Scalars['ID']
 }
 
 export type Query = {
-  __typename?: 'Query'
-  dog: Dog
-  dogs?: Maybe<Array<Dog>>
+	__typename?: 'Query'
+	dog: Dog
+	dogs?: Maybe<Array<Dog>>
 }
 
 export type QueryDogArgs = {
-  id: Scalars['ID']
+	id: Scalars['ID']
 }
 
 export type DogFieldsFragment = {
-  __typename?: 'Dog'
-  id: string
-  name: string
-  age: number
-  isPedigree?: Maybe<boolean>
+	__typename?: 'Dog'
+	id: string
+	name: string
+	age: number
+	isPedigree?: Maybe<boolean>
 }
 
 export type GetDogsQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetDogsQuery = {
-  __typename?: 'Query'
-  dogs?: Maybe<
-    Array<{
-      __typename?: 'Dog'
-      id: string
-      name: string
-      age: number
-      isPedigree?: Maybe<boolean>
-    }>
-  >
+	__typename?: 'Query'
+	dogs?: Maybe<
+		Array<{
+			__typename?: 'Dog'
+			id: string
+			name: string
+			age: number
+			isPedigree?: Maybe<boolean>
+		}>
+	>
 }
 
 export const DogFieldsFragmentDoc = gql`
-  fragment DogFields on Dog {
-    id
-    name
-    age
-    isPedigree
-  }
+	fragment DogFields on Dog {
+		id
+		name
+		age
+		isPedigree
+	}
 `
 export const GetDogsDocument = gql`
-  query GetDogs {
-    dogs {
-      ...DogFields
-    }
-  }
-  ${DogFieldsFragmentDoc}
+	query GetDogs {
+		dogs {
+			...DogFields
+		}
+	}
+	${DogFieldsFragmentDoc}
 `
 
 /**
@@ -115,36 +115,27 @@ export const GetDogsDocument = gql`
  * });
  */
 export function useGetDogsQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetDogsQuery, GetDogsQueryVariables>
+	baseOptions?: Apollo.QueryHookOptions<GetDogsQuery, GetDogsQueryVariables>
 ) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetDogsQuery, GetDogsQueryVariables>(
-    GetDogsDocument,
-    options
-  )
+	const options = { ...defaultOptions, ...baseOptions }
+	return Apollo.useQuery<GetDogsQuery, GetDogsQueryVariables>(GetDogsDocument, options)
 }
 export function useGetDogsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetDogsQuery, GetDogsQueryVariables>
+	baseOptions?: Apollo.LazyQueryHookOptions<GetDogsQuery, GetDogsQueryVariables>
 ) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetDogsQuery, GetDogsQueryVariables>(
-    GetDogsDocument,
-    options
-  )
+	const options = { ...defaultOptions, ...baseOptions }
+	return Apollo.useLazyQuery<GetDogsQuery, GetDogsQueryVariables>(GetDogsDocument, options)
 }
 export type GetDogsQueryHookResult = ReturnType<typeof useGetDogsQuery>
 export type GetDogsLazyQueryHookResult = ReturnType<typeof useGetDogsLazyQuery>
-export type GetDogsQueryResult = Apollo.QueryResult<
-  GetDogsQuery,
-  GetDogsQueryVariables
->
+export type GetDogsQueryResult = Apollo.QueryResult<GetDogsQuery, GetDogsQueryVariables>
 
 export interface PossibleTypesResultData {
-  possibleTypes: {
-    [key: string]: string[]
-  }
+	possibleTypes: {
+		[key: string]: string[]
+	}
 }
 const result: PossibleTypesResultData = {
-  possibleTypes: {}
+	possibleTypes: {}
 }
 export default result
