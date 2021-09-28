@@ -10,7 +10,7 @@ export const DogFragment = gql`
 `
 
 export const GET_DOGS = gql`
-  query {
+  query GetDogs {
     dogs {
       ...DogFields
     }

@@ -64,9 +64,9 @@ export type DogFieldsFragment = {
   isPedigree?: Maybe<boolean>
 }
 
-export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never }>
+export type GetDogsQueryVariables = Exact<{ [key: string]: never }>
 
-export type Unnamed_1_Query = {
+export type GetDogsQuery = {
   __typename?: "Query"
   dogs?: Maybe<
     Array<{
@@ -87,8 +87,8 @@ export const DogFieldsFragmentDoc = gql`
     isPedigree
   }
 `
-export const Document = gql`
-  {
+export const GetDogsDocument = gql`
+  query GetDogs {
     dogs {
       ...DogFields
     }
@@ -97,33 +97,35 @@ export const Document = gql`
 `
 
 /**
- * __useQuery__
+ * __useGetDogsQuery__
  *
- * To run a query within a React component, call `useQuery` and pass it any options that fit your needs.
- * When your component renders, `useQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetDogsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDogsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useQuery({
+ * const { data, loading, error } = useGetDogsQuery({
  *   variables: {
  *   },
  * });
  */
-export function useQuery(baseOptions?: Apollo.QueryHookOptions<Query, QueryVariables>) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<Query, QueryVariables>(Document, options)
-}
-export function useLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<Query, QueryVariables>
+export function useGetDogsQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetDogsQuery, GetDogsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<Query, QueryVariables>(Document, options)
+  return Apollo.useQuery<GetDogsQuery, GetDogsQueryVariables>(GetDogsDocument, options)
 }
-export type QueryHookResult = ReturnType<typeof useQuery>
-export type LazyQueryHookResult = ReturnType<typeof useLazyQuery>
-export type QueryResult = Apollo.QueryResult<Query, QueryVariables>
+export function useGetDogsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetDogsQuery, GetDogsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetDogsQuery, GetDogsQueryVariables>(GetDogsDocument, options)
+}
+export type GetDogsQueryHookResult = ReturnType<typeof useGetDogsQuery>
+export type GetDogsLazyQueryHookResult = ReturnType<typeof useGetDogsLazyQuery>
+export type GetDogsQueryResult = Apollo.QueryResult<GetDogsQuery, GetDogsQueryVariables>
 
 export interface PossibleTypesResultData {
   possibleTypes: {
