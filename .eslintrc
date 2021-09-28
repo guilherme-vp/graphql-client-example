@@ -71,6 +71,13 @@
                 "allowIndentationTabs": true
             }
         ],
+        "max-len": "warn",
+        "import/no-unresolved": "off",
+        "import/prefer-default-export": "off",
+        "import/extensions": [
+            "error",
+            "never"
+        ],
         "indent": [
             "error",
             "tab",
@@ -125,7 +132,6 @@
         "@typescript-eslint/semi": [
             "error",
             "never"
-        ],
-        "prettier/prettier": "error"
+        ]
     }
 }
