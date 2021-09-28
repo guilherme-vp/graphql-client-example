@@ -58,6 +58,7 @@ export const SubmitButton = styled.button`
 	border: 0 none;
 	border-radius: 4px;
 	transition: background-color 0.3s;
+	cursor: pointer;
 
 	&:active {
 		background-color: #6ec6ee;
