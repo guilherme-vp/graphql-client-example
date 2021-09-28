@@ -9,26 +9,26 @@ import {
 	SubmitButton,
 	Title
 } from './CreateDog.styled'
+import type { DogModel } from '../../models'
 
-interface FormState {
-	name: string
-	age: number
-	pedigree: boolean
-}
+type FormState = DogModel
 interface Props {
-	handleCreate: () => void
+	addDog: (data: DogModel) => void
 }
 
 const defaultState: FormState = {
 	name: '',
 	age: 0,
-	pedigree: false
+	isPedigree: false
 }
 
-export const CreateDog = ({ handleCreate }: Props) => {
+export const CreateDog = ({ addDog }: Props) => {
 	const [form, setForm] = useState<FormState>(defaultState)
 	const [createDog, { loading, error }] = useAddDogMutation({
-		onError: () => {}
+		onError: () => {},
+		onCompleted: data =>
+			// eslint-disable-next-line implicit-arrow-linebreak
+			addDog(data.addDog)
 	})
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +36,7 @@ export const CreateDog = ({ handleCreate }: Props) => {
 	}
 
 	const handleChangeRadio = (checked: boolean) => {
-		setForm({ ...form, pedigree: checked })
+		setForm({ ...form, isPedigree: checked })
 	}
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -45,12 +45,11 @@ export const CreateDog = ({ handleCreate }: Props) => {
 			variables: {
 				addDogInput: {
 					...form,
-					isPedigree: form.pedigree
+					age: Number(form.age)
 				}
 			}
 		})
 		if (!error) {
-			handleCreate()
 			setForm(defaultState)
 		}
 	}
@@ -91,7 +90,7 @@ export const CreateDog = ({ handleCreate }: Props) => {
 							name='isPedigree'
 							id='isPedigree'
 							onChange={() => handleChangeRadio(true)}
-							checked={form.pedigree}
+							checked={form.isPedigree}
 							value='Yes'
 						/>
 						Yes
@@ -102,7 +101,7 @@ export const CreateDog = ({ handleCreate }: Props) => {
 							name='isPedigree'
 							id='isPedigree'
 							onChange={() => handleChangeRadio(false)}
-							checked={!form.pedigree}
+							checked={!form.isPedigree}
 						/>
 						No
 					</Label>
@@ -110,7 +109,7 @@ export const CreateDog = ({ handleCreate }: Props) => {
 			</div>
 			<div>
 				<SubmitButton disabled={loading} type='submit'>
-					Create!
+					Create Dog!
 				</SubmitButton>
 			</div>
 		</Form>
