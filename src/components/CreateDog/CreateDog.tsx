@@ -1,10 +1,22 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { Form, Input, Label, RadioInput, SubmitButton, Title } from './CreateDog.styled'
+import { useAddDogMutation } from '../../hooks/useApollo'
+import {
+	Error,
+	Form,
+	Input,
+	Label,
+	RadioInput,
+	SubmitButton,
+	Title
+} from './CreateDog.styled'
 
 interface FormState {
 	name: string
 	age: number
 	pedigree: boolean
+}
+interface Props {
+	handleCreate: () => void
 }
 
 const defaultState: FormState = {
@@ -13,8 +25,11 @@ const defaultState: FormState = {
 	pedigree: false
 }
 
-export const CreateDog = () => {
+export const CreateDog = ({ handleCreate }: Props) => {
 	const [form, setForm] = useState<FormState>(defaultState)
+	const [createDog, { loading, error }] = useAddDogMutation({
+		onError: () => {}
+	})
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setForm({ ...form, [e.target.name]: e.target.value })
@@ -24,14 +39,26 @@ export const CreateDog = () => {
 		setForm({ ...form, pedigree: checked })
 	}
 
-	const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		setForm(defaultState)
+		createDog({
+			variables: {
+				addDogInput: {
+					...form,
+					isPedigree: form.pedigree
+				}
+			}
+		})
+		if (!error) {
+			handleCreate()
+			setForm(defaultState)
+		}
 	}
 
 	return (
-		<Form onSubmit={onSubmit}>
+		<Form onSubmit={handleSubmit}>
 			<Title>Create your own dog!</Title>
+			{error && <Error>An error ocurred, please try again.</Error>}
 			<Label>
 				Name:
 				<Input
@@ -82,7 +109,9 @@ export const CreateDog = () => {
 				</div>
 			</div>
 			<div>
-				<SubmitButton type='submit'>Create!</SubmitButton>
+				<SubmitButton disabled={loading} type='submit'>
+					Create!
+				</SubmitButton>
 			</div>
 		</Form>
 	)
