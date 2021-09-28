@@ -1,1 +1,1 @@
-export const API_URL = `${process.env.API_URI}/graphql`
+export const API_URL = 'http://localhost:4000/graphql'
