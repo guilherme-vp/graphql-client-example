@@ -8,6 +8,7 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
+        "plugin:jsx-a11y/recommended",
         "prettier",
         "airbnb"
     ],
@@ -89,11 +90,7 @@
         "no-use-before-define": "off",
         "quotes": [
             "error",
-            "single",
-            {
-                "allowTemplateLiterals": true,
-                "avoidEscape": false
-            }
+            "single"
         ],
         "react/jsx-filename-extension": [
             1,
@@ -129,6 +126,7 @@
         "react/no-array-index-key": "off",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
+        "@typescript-eslint/explicit-module-boundary-types": "warn",
         "@typescript-eslint/semi": [
             "error",
             "never"
