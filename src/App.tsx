@@ -1,8 +1,8 @@
-import React from "react"
-import { ApolloProvider } from "@apollo/client"
-import { GlobalStyle } from "./styles/global"
-import { client } from "./api/client"
-import { Dogs } from "./screens/Dogs"
+import React from 'react'
+import { ApolloProvider } from '@apollo/client'
+import { GlobalStyle } from './styles/global'
+import { client } from './api/client'
+import { Dogs } from './screens/Dogs'
 
 function App() {
   return (

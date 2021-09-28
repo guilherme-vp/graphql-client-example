@@ -1,5 +1,5 @@
-import React from "react"
-import { useGetDogsQuery } from "../../hooks/useApollo"
+import React from 'react'
+import { useGetDogsQuery } from '../../hooks/useApollo'
 
 export const Dogs = () => {
   const { data, loading } = useGetDogsQuery()

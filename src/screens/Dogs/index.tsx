@@ -1,2 +1,2 @@
-export * from "./Dogs"
-export { default } from "./Dogs"
+export * from './Dogs'
+export { default } from './Dogs'

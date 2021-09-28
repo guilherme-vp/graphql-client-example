@@ -1,7 +1,10 @@
-import { gql } from "@apollo/client"
-import * as Apollo from "@apollo/client"
+import { gql } from '@apollo/client'
+import * as Apollo from '@apollo/client'
+
 export type Maybe<T> = T | null
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K]
+}
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]?: Maybe<T[SubKey]>
 }
@@ -19,23 +22,23 @@ export type Scalars = {
 }
 
 export type AddDog = {
-  age: Scalars["Int"]
-  isPedigree?: Maybe<Scalars["Boolean"]>
-  name: Scalars["String"]
+  age: Scalars['Int']
+  isPedigree?: Maybe<Scalars['Boolean']>
+  name: Scalars['String']
 }
 
 export type Dog = {
-  __typename?: "Dog"
-  age: Scalars["Int"]
-  id: Scalars["ID"]
-  isPedigree?: Maybe<Scalars["Boolean"]>
-  name: Scalars["String"]
+  __typename?: 'Dog'
+  age: Scalars['Int']
+  id: Scalars['ID']
+  isPedigree?: Maybe<Scalars['Boolean']>
+  name: Scalars['String']
 }
 
 export type Mutation = {
-  __typename?: "Mutation"
+  __typename?: 'Mutation'
   addDog: Dog
-  removeDog: Scalars["Boolean"]
+  removeDog: Scalars['Boolean']
 }
 
 export type MutationAddDogArgs = {
@@ -43,21 +46,21 @@ export type MutationAddDogArgs = {
 }
 
 export type MutationRemoveDogArgs = {
-  id: Scalars["ID"]
+  id: Scalars['ID']
 }
 
 export type Query = {
-  __typename?: "Query"
+  __typename?: 'Query'
   dog: Dog
   dogs?: Maybe<Array<Dog>>
 }
 
 export type QueryDogArgs = {
-  id: Scalars["ID"]
+  id: Scalars['ID']
 }
 
 export type DogFieldsFragment = {
-  __typename?: "Dog"
+  __typename?: 'Dog'
   id: string
   name: string
   age: number
@@ -67,10 +70,10 @@ export type DogFieldsFragment = {
 export type GetDogsQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetDogsQuery = {
-  __typename?: "Query"
+  __typename?: 'Query'
   dogs?: Maybe<
     Array<{
-      __typename?: "Dog"
+      __typename?: 'Dog'
       id: string
       name: string
       age: number
@@ -115,17 +118,26 @@ export function useGetDogsQuery(
   baseOptions?: Apollo.QueryHookOptions<GetDogsQuery, GetDogsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetDogsQuery, GetDogsQueryVariables>(GetDogsDocument, options)
+  return Apollo.useQuery<GetDogsQuery, GetDogsQueryVariables>(
+    GetDogsDocument,
+    options
+  )
 }
 export function useGetDogsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<GetDogsQuery, GetDogsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetDogsQuery, GetDogsQueryVariables>(GetDogsDocument, options)
+  return Apollo.useLazyQuery<GetDogsQuery, GetDogsQueryVariables>(
+    GetDogsDocument,
+    options
+  )
 }
 export type GetDogsQueryHookResult = ReturnType<typeof useGetDogsQuery>
 export type GetDogsLazyQueryHookResult = ReturnType<typeof useGetDogsLazyQuery>
-export type GetDogsQueryResult = Apollo.QueryResult<GetDogsQuery, GetDogsQueryVariables>
+export type GetDogsQueryResult = Apollo.QueryResult<
+  GetDogsQuery,
+  GetDogsQueryVariables
+>
 
 export interface PossibleTypesResultData {
   possibleTypes: {
