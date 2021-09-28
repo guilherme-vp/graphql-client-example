@@ -17,7 +17,7 @@ export const DogContainer = styled.div`
 export const AnimatedAnnoyingDog = styled.img.withConfig<{ hasClicked?: boolean }>({})`
 	position: absolute;
 	width: 200px;
-	left: ${props => (props.hasClicked ? '-50%' : 'calc(50% - 100px)')};
+	left: ${props => (props.hasClicked ? '-100vw' : 'calc(50% - 100px)')};
 	transition: all 0.5s;
 	bottom: -80px;
 `
