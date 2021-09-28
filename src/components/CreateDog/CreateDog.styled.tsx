@@ -7,6 +7,12 @@ export const Title = styled.h1`
 	margin-bottom: 24px;
 `
 
+export const Error = styled.h4`
+	color: #ff0000;
+	text-align: center;
+	margin-bottom: 16px;
+`
+
 export const Form = styled.form`
 	width: 100%;
 	border: 1px solid #ccc;
