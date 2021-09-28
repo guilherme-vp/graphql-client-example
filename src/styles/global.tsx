@@ -17,14 +17,14 @@ export const GlobalStyle = createGlobalStyle`
 	}
 
 	body {
-		color: #333;
+		color: #FFF;
 		font-size: 0.875rem;
 	 	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 		font-weight: 400;
 		line-height: 1.43;
 		overflow-x: hidden;
 		letter-spacing: 0.01071em;
-		background-color: #F8F9FE;
+		background-color: #89CFF0;
 	}
 
 	button {
