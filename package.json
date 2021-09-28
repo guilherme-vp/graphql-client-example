@@ -26,6 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "format": "prettier --write './src'",
+    "lint": "eslint --fix './src/**/*'",
     "generate": "graphql-codegen --config codegen.yml"
   },
   "eslintConfig": {
