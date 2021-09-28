@@ -25,12 +25,27 @@
 		"ecmaVersion": 12,
 		"sourceType": "module"
 	},
-	"plugins": ["react", "prettier", "@typescript-eslint", "react-hooks", "jsx-a11y"],
+	"plugins": [
+		"react",
+		"prettier",
+		"@typescript-eslint",
+		"react-hooks",
+		"jsx-a11y"
+	],
 	"rules": {
-		"semi": ["error", "never"],
+		"semi": [
+			"error",
+			"never"
+		],
 		"object-curly-newline": "warn",
-		"comma-dangle": ["error", "never"],
-		"arrow-parens": ["error", "as-needed"],
+		"comma-dangle": [
+			"error",
+			"never"
+		],
+		"arrow-parens": [
+			"error",
+			"as-needed"
+		],
 		"consistent-return": "off",
 		"no-underscore-dangle": "off",
 		"func-names": "off",
@@ -42,7 +57,10 @@
 		"object-shorthand": "error",
 		"no-template-curly-in-string": "error",
 		"prefer-template": "error",
-		"linebreak-style": ["error", "unix"],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
 		"no-plusplus": [
 			"error",
 			{
@@ -55,10 +73,12 @@
 				"allowIndentationTabs": true
 			}
 		],
-		"max-len": "warn",
 		"import/no-unresolved": "off",
 		"import/prefer-default-export": "off",
-		"import/extensions": ["error", "never"],
+		"import/extensions": [
+			"off",
+			"never"
+		],
 		"indent": [
 			"error",
 			"tab",
@@ -68,11 +88,29 @@
 		],
 		"no-param-reassign": "off",
 		"no-use-before-define": "off",
-		"quotes": ["error", "single"],
+		"object-property-newline": "off",
+		"max-len": [
+			"error",
+			{
+				"code": 180
+			}
+		],
+		"quotes": [
+			"error",
+			"single"
+		],
+		"jsx-quotes": [
+			"error",
+			"prefer-single"
+		],
+		"jsx-a11y/click-events-have-key-event": "off",
+		"jsx-a11y/no-noninteractive-element-interactions": "off",
 		"react/jsx-filename-extension": [
 			1,
 			{
-				"extensions": [".tsx"]
+				"extensions": [
+					".tsx"
+				]
 			}
 		],
 		"react/jsx-curly-spacing": [
@@ -85,15 +123,28 @@
 				"children": true
 			}
 		],
-		"react/jsx-indent": [2, "tab"],
+		"react/jsx-indent": [
+			2,
+			"tab"
+		],
 		"react/jsx-props-no-spreading": "off",
 		"react/prop-types": "off",
-		"react/jsx-indent-props": [2, "tab"],
-		"react/jsx-key": ["warn"],
+		"react/jsx-indent-props": [
+			2,
+			"tab"
+		],
+		"react/jsx-key": [
+			"warn"
+		],
+		"react/react-in-jsx-scope": "off",
 		"react/no-array-index-key": "off",
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn",
-		"@typescript-eslint/explicit-module-boundary-types": "warn",
-		"@typescript-eslint/semi": ["error", "never"]
+		"react/jsx-one-expression-per-line": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/semi": [
+			"error",
+			"never"
+		]
 	}
 }
