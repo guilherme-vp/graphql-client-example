@@ -16,3 +16,11 @@ export const GET_DOGS = gql`
 		}
 	}
 `
+
+export const ADD_DOG = gql`
+	mutation AddDog($addDogInput: AddDog!) {
+		addDog(input: $addDogInput) {
+			...DogFields
+		}
+	}
+`
