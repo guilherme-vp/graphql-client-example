@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
+
 export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
@@ -20,7 +21,7 @@ export type Scalars = {
 
 export type AddDog = {
 	age: Scalars['Int']
-	isPedigree?: Maybe<Scalars['Boolean']>
+	isPedigree: Scalars['Boolean']
 	name: Scalars['String']
 }
 
@@ -28,7 +29,7 @@ export type Dog = {
 	__typename?: 'Dog'
 	age: Scalars['Int']
 	id: Scalars['ID']
-	isPedigree?: Maybe<Scalars['Boolean']>
+	isPedigree: Scalars['Boolean']
 	name: Scalars['String']
 }
 
@@ -61,7 +62,7 @@ export type DogFieldsFragment = {
 	id: string
 	name: string
 	age: number
-	isPedigree?: Maybe<boolean>
+	isPedigree: boolean
 }
 
 export type GetDogsQueryVariables = Exact<{ [key: string]: never }>
@@ -74,7 +75,7 @@ export type GetDogsQuery = {
 			id: string
 			name: string
 			age: number
-			isPedigree?: Maybe<boolean>
+			isPedigree: boolean
 		}>
 	>
 }
@@ -85,13 +86,7 @@ export type AddDogMutationVariables = Exact<{
 
 export type AddDogMutation = {
 	__typename?: 'Mutation'
-	addDog: {
-		__typename?: 'Dog'
-		id: string
-		name: string
-		age: number
-		isPedigree?: Maybe<boolean>
-	}
+	addDog: { __typename?: 'Dog'; id: string; name: string; age: number; isPedigree: boolean }
 }
 
 export const DogFieldsFragmentDoc = gql`
