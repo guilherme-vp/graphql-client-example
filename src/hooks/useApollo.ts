@@ -1,10 +1,7 @@
 import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
-
 export type Maybe<T> = T | null
-export type Exact<T extends { [key: string]: unknown }> = {
-	[K in keyof T]: T[K]
-}
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 	[SubKey in K]?: Maybe<T[SubKey]>
 }
@@ -82,6 +79,21 @@ export type GetDogsQuery = {
 	>
 }
 
+export type AddDogMutationVariables = Exact<{
+	addDogInput: AddDog
+}>
+
+export type AddDogMutation = {
+	__typename?: 'Mutation'
+	addDog: {
+		__typename?: 'Dog'
+		id: string
+		name: string
+		age: number
+		isPedigree?: Maybe<boolean>
+	}
+}
+
 export const DogFieldsFragmentDoc = gql`
 	fragment DogFields on Dog {
 		id
@@ -129,6 +141,51 @@ export function useGetDogsLazyQuery(
 export type GetDogsQueryHookResult = ReturnType<typeof useGetDogsQuery>
 export type GetDogsLazyQueryHookResult = ReturnType<typeof useGetDogsLazyQuery>
 export type GetDogsQueryResult = Apollo.QueryResult<GetDogsQuery, GetDogsQueryVariables>
+export const AddDogDocument = gql`
+	mutation AddDog($addDogInput: AddDog!) {
+		addDog(input: $addDogInput) {
+			...DogFields
+		}
+	}
+	${DogFieldsFragmentDoc}
+`
+export type AddDogMutationFn = Apollo.MutationFunction<
+	AddDogMutation,
+	AddDogMutationVariables
+>
+
+/**
+ * __useAddDogMutation__
+ *
+ * To run a mutation, you first call `useAddDogMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddDogMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addDogMutation, { data, loading, error }] = useAddDogMutation({
+ *   variables: {
+ *      addDogInput: // value for 'addDogInput'
+ *   },
+ * });
+ */
+export function useAddDogMutation(
+	baseOptions?: Apollo.MutationHookOptions<AddDogMutation, AddDogMutationVariables>
+) {
+	const options = { ...defaultOptions, ...baseOptions }
+	return Apollo.useMutation<AddDogMutation, AddDogMutationVariables>(
+		AddDogDocument,
+		options
+	)
+}
+export type AddDogMutationHookResult = ReturnType<typeof useAddDogMutation>
+export type AddDogMutationResult = Apollo.MutationResult<AddDogMutation>
+export type AddDogMutationOptions = Apollo.BaseMutationOptions<
+	AddDogMutation,
+	AddDogMutationVariables
+>
 
 export interface PossibleTypesResultData {
 	possibleTypes: {
