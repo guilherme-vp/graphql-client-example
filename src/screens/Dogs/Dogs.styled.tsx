@@ -37,3 +37,9 @@ export const Header = styled.header`
 		text-align: center;
 	}
 `
+
+export const CardsContainer = styled.aside`
+	width: 100%;
+	display: flex;
+	margin-bottom: 48px;
+`
