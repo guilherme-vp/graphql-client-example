@@ -42,4 +42,10 @@ export const CardsContainer = styled.aside`
 	width: 100%;
 	display: flex;
 	margin-bottom: 48px;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	@media only screen and (min-width: 500px) {
+		justify-content: flex-start;
+	}
 `
