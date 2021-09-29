@@ -89,6 +89,12 @@ export type AddDogMutation = {
 	addDog: { __typename?: 'Dog'; id: string; name: string; age: number; isPedigree: boolean }
 }
 
+export type Unnamed_1_MutationVariables = Exact<{
+	removeDogId: Scalars['ID']
+}>
+
+export type Unnamed_1_Mutation = { __typename?: 'Mutation'; removeDog: boolean }
+
 export const DogFieldsFragmentDoc = gql`
 	fragment DogFields on Dog {
 		id
@@ -181,6 +187,39 @@ export type AddDogMutationOptions = Apollo.BaseMutationOptions<
 	AddDogMutation,
 	AddDogMutationVariables
 >
+export const Document = gql`
+	mutation ($removeDogId: ID!) {
+		removeDog(id: $removeDogId)
+	}
+`
+export type MutationFn = Apollo.MutationFunction<Mutation, MutationVariables>
+
+/**
+ * __useMutation__
+ *
+ * To run a mutation, you first call `useMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [mutation, { data, loading, error }] = useMutation({
+ *   variables: {
+ *      removeDogId: // value for 'removeDogId'
+ *   },
+ * });
+ */
+export function useMutation(
+	baseOptions?: Apollo.MutationHookOptions<Mutation, MutationVariables>
+) {
+	const options = { ...defaultOptions, ...baseOptions }
+	return Apollo.useMutation<Mutation, MutationVariables>(Document, options)
+}
+export type MutationHookResult = ReturnType<typeof useMutation>
+export type MutationResult = Apollo.MutationResult<Mutation>
+export type MutationOptions = Apollo.BaseMutationOptions<Mutation, MutationVariables>
 
 export interface PossibleTypesResultData {
 	possibleTypes: {
