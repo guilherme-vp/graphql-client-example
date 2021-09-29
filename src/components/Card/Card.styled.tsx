@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const CardContainer = styled.div`
-	width: 200px;
+	width: 100%;
 	padding: 24px;
 	margin: 8px 16px;
 	word-wrap: break-word;
@@ -11,6 +11,10 @@ export const CardContainer = styled.div`
 	color: #333;
 	p {
 		margin: 4px 0;
+	}
+
+	@media only screen and (min-width: 500px) {
+		width: 200px;
 	}
 `
 
