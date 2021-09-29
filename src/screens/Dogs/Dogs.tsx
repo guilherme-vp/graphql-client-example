@@ -1,10 +1,22 @@
 import UselessComponent from '../../components/AnnoyingDog'
+import { Card } from '../../components/Card'
 import CreateDog from '../../components/CreateDog'
-import { useGetDogsQuery } from '../../hooks/useApollo'
-import { Container, Header, PageContainer } from './Dogs.styled'
+import { useGetDogsQuery, useRemoveDogMutation } from '../../hooks/useApollo'
+import { CardsContainer, Container, Header, PageContainer } from './Dogs.styled'
 
 export const Dogs = () => {
-	const { data, loading, error } = useGetDogsQuery()
+	const { data, loading, error, refetch } = useGetDogsQuery()
+	const [removeDog] = useRemoveDogMutation({
+		onCompleted: () => {
+			refetch()
+		}
+	})
+
+	const handleDelete = (id: string) => {
+		removeDog({
+			variables: { removeDogId: id }
+		})
+	}
 
 	return (
 		<PageContainer>
@@ -15,18 +27,14 @@ export const Dogs = () => {
 				<Container>
 					{loading && <h1>Loading...</h1>}
 					{error && <h1>An error ocurred, make sure the API is running...</h1>}
-					{data && (
+					{data?.dogs && (
 						<>
-							<ul>
-								{data?.dogs?.map(({ id, name, age, isPedigree }) => (
-									<li key={id}>
-										<h2>Name: {name}</h2>
-										<h5>Age: {age}</h5>
-										<h5>Is Pedigree: {isPedigree}</h5>
-									</li>
+							<CardsContainer>
+								{data.dogs.map(dog => (
+									<Card handleDelete={handleDelete} key={dog.id} dog={dog} />
 								))}
-							</ul>
-							<CreateDog />
+							</CardsContainer>
+							<CreateDog refetch={refetch} />
 						</>
 					)}
 				</Container>
