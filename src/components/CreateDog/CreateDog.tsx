@@ -25,6 +25,7 @@ const defaultState: FormState = {
 export const CreateDog = ({ refetch }: Props) => {
 	const [form, setForm] = useState<FormState>(defaultState)
 	const [createDog, { loading, error }] = useAddDogMutation({
+		// eslint-disable-next-line @typescript-eslint/no-empty-function
 		onError: () => {},
 		onCompleted: () => refetch()
 	})

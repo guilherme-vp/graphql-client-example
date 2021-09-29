@@ -9,7 +9,9 @@ export const Dogs = () => {
 	const [removeDog] = useRemoveDogMutation({
 		onCompleted: () => {
 			refetch()
-		}
+		},
+		// eslint-disable-next-line @typescript-eslint/no-empty-function
+		onError: () => {}
 	})
 
 	const handleDelete = (id: string) => {

@@ -37,7 +37,7 @@
 			"error",
 			"never"
 		],
-		"object-curly-newline": "warn",
+		"object-curly-newline": "off",
 		"comma-dangle": [
 			"error",
 			"never"
