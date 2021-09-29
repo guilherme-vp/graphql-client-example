@@ -13,7 +13,7 @@ import type { DogModel } from '../../models'
 
 type FormState = DogModel
 interface Props {
-	addDog: (data: DogModel) => void
+	refetch: () => void
 }
 
 const defaultState: FormState = {
@@ -22,13 +22,11 @@ const defaultState: FormState = {
 	isPedigree: false
 }
 
-export const CreateDog = ({ addDog }: Props) => {
+export const CreateDog = ({ refetch }: Props) => {
 	const [form, setForm] = useState<FormState>(defaultState)
 	const [createDog, { loading, error }] = useAddDogMutation({
 		onError: () => {},
-		onCompleted: data =>
-			// eslint-disable-next-line implicit-arrow-linebreak
-			addDog(data.addDog)
+		onCompleted: () => refetch()
 	})
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
