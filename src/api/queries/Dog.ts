@@ -26,7 +26,7 @@ export const ADD_DOG = gql`
 `
 
 export const REMOVE_DOG = gql`
-	mutation ($removeDogId: ID!) {
+	mutation RemoveDog($removeDogId: ID!) {
 		removeDog(id: $removeDogId)
 	}
 `
