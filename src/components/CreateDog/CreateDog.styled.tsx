@@ -15,9 +15,9 @@ export const Error = styled.h4`
 
 export const Form = styled.form`
 	width: 100%;
-	border: 1px solid #ccc;
+	box-shadow: 0 2px 3px #ccc;
 	background-color: #fafafa;
-	padding: 24px 40px;
+	padding: 40px;
 	border-radius: 12px;
 	color: #333;
 
