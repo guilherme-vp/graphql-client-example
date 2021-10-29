@@ -10,11 +10,13 @@ COPY . .
 RUN yarn build
 
 # Stage 2:
-FROM nginx:1.15
+FROM nginx:1.15 AS serve-stage
+
+RUN rm /etc/nginx/conf.d/default.conf
+
+COPY --from=build-stage /nginx/nginx.conf /etc/nginx/conf.d
 
 COPY --from=build-stage /build /usr/share/nginx/html
-
-COPY --from=build-stage nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
