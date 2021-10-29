@@ -12,8 +12,8 @@ phases:
     commands:
     - echo Building the app on `date`
     - echo Building Docker container...
-    - docker build --cache-from assignment -t assignment .
-    - docker tag assignment:latest 838709283190.dkr.ecr.sa-east-1.amazonaws.com/nginx:latest
+    - docker build --cache-from graphql-client -t graphql-client .
+    - docker tag graphql-client:latest 838709283190.dkr.ecr.sa-east-1.amazonaws.com/nginx:latest
 
   post_build:
     commands:
